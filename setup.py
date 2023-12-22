@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
-from mpsiemlib import __url__, __version__, __author__, __license__, __title__, __description__, __maintainer__
+from mpsiemlib.__metadata__ import __url__, __version__, __author__, __license__, __title__, __description__, __maintainer__
 
+with open("requirements.txt", "r", encoding="utf-8") as fh:
+    INSTALL_REQUIRES = fh.readlines()
 
 def readme():
     with open('README.md', 'r') as f:
         return f.read()
-
 
 setup(
     name=__title__,
@@ -21,9 +22,6 @@ setup(
     long_description_content_type='text/markdown',
     zip_safe=False,
     python_requires='>=3.7',
-    install_requires=["requests",
-                      "PyYAML",
-                      "pytz",
-                      "elasticsearch>=7.10.0,<8.0.0"]
+    install_requires=INSTALL_REQUIRES,
 
 )
